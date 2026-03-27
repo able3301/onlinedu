@@ -304,11 +304,13 @@ def append_text_to_ticket(existing_text: str, message: Message) -> str:
     if not added_text:
         return existing_text
 
+    msg_time = message.date.strftime("%d.%m.%Y %H:%M") if message.date else "vaqt noma'lum"
+
     return (
         existing_text
         + "\n\n"
-        + "📨 <b>Qo'shimcha xabar:</b>\n"
-        + added_text
+        + f"📨 <b>Qo'shimcha xabar ({msg_time})</b>\n"
+        + f"<b>{added_text}</b>"
     )
 
 
